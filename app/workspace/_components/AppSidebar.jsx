@@ -1,7 +1,7 @@
 'use client'
 
 
-import React from 'react'
+import React, { useContext } from 'react'
 import Image from 'next/image'
 import {
     Sidebar,
@@ -18,12 +18,15 @@ import {
 import { Button } from '@/components/ui/button'
 import {  usePathname } from 'next/navigation'
 import { menuOptions } from '@/data/data'
+import { UserDetailsContext } from '@/context/UserContext'
 
 
 
 
 
 const AppSidebar = () => {
+    const { userDetails } = useContext(UserDetailsContext)
+    // console.log(userDetails)
 
 
     const path = usePathname();
@@ -33,6 +36,9 @@ const AppSidebar = () => {
         <Sidebar>
             <SidebarHeader className='flex items-center my-1' >
                 <Image src={'/imgs/logo.png'} alt='Arik Alexandrov' width={200} height={10} />
+                {
+                    userDetails.name && (<span className='mt-[-15px]'>Shalom {userDetails?.name}</span>)  
+                }
             </SidebarHeader>
             <hr />
             <SidebarContent>

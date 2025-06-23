@@ -25,7 +25,7 @@ const WorkspaceProvider = ({ children }) => {
             picture: user?.imageUrl
         })
 
-        console.log(result)
+        // console.log(result)
         setUserDetails(result);
     }
 

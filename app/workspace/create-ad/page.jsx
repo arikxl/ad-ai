@@ -25,7 +25,7 @@ const CreateAdPage = () => {
         const result = await axios.post('/api/generate-script', {
             topic: userInput
         })
-        console.log(result.data)
+        // console.log(result.data)
 
         const rawResult = (result?.data).replace('```json', '').replace('```', '')
         const jsonResult = JSON.parse(rawResult);
@@ -35,7 +35,7 @@ const CreateAdPage = () => {
             topic: userInput,
             scriptVariant: jsonResult
         })
-        console.log(resp)
+        // console.log(resp)
         setLoading(false)
     }
 
@@ -57,16 +57,18 @@ const CreateAdPage = () => {
                 onChange={(e) => { setUserInput(e.target.value) }}
             />
 
-            <Button className={'w-md mt-5 text-center mx-auto gradient'}
-                onClick={generateAiVideoScript} disabled={loading}>
-                {
-                    !loading
-                        ? (<> <Sparkles /> Create!</>)
-                        : (<LoaderPinwheel className='animate-spin' />)
-                }
-
-
-            </Button>
+            {
+                userDetails.name && (
+                    <Button className={'w-md mt-5 text-center mx-auto gradient'}
+                        onClick={generateAiVideoScript} disabled={loading}>
+                        {
+                            !loading
+                                ? (<> <Sparkles /> Create!</>)
+                                : (<LoaderPinwheel className='animate-spin' />)
+                        }
+                    </Button>
+                )
+            }
         </div>
     )
 }
