@@ -2,13 +2,24 @@
 
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import {  Sparkles } from 'lucide-react'
+import axios from 'axios'
+import {   LoaderPinwheel, Sparkles } from 'lucide-react'
 import Image from 'next/image'
 import React, { useState } from 'react'
 
 const CreateAdPage = () => {
 
-const [userInput, setUserInput] = useState('')
+    const [userInput, setUserInput] = useState('')
+    const [loading, setLoading] = useState(false)
+    
+    const generateAiVideoScript = async () => {
+        setLoading(true)
+        const result = await axios.post('/api/generate-script', {
+            topic: userInput
+        })
+        console.log(result.data)
+        setLoading(false)
+    }
 
   return (
       <div className='mt-20 flex flex-col'>
@@ -28,8 +39,14 @@ const [userInput, setUserInput] = useState('')
               onChange={ (e)=>{setUserInput(e.target.value)}}
           />
           
-          <Button className={'w-md mt-5 text-center mx-auto gradient'}>
-              <Sparkles /> Create!
+          <Button className={'w-md mt-5 text-center mx-auto gradient'}
+              onClick={generateAiVideoScript} disabled={loading }> 
+              {
+                  !loading
+                      ? (<> <Sparkles /> Create!</>)
+                      : (<LoaderPinwheel className='animate-spin'/>)
+              }
+              
               
           </Button>
       </div>
