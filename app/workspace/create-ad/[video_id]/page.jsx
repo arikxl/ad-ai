@@ -5,6 +5,7 @@ import { useConvex, useQuery } from 'convex/react';
 import { useParams } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import Script from './_components/Script';
+import UploadFiles from './_components/UploadFiles';
 
 const VideoSettingsPage = () => {
 
@@ -48,7 +49,8 @@ const VideoSettingsPage = () => {
 
             <div className='grid grid-cols-1 md:grid-cols-3 mt-8'>
                 <div className='md:col-span-2'>
-                    <Script videoData={videoData} onHandleInputChange={onHandleInputChange } />
+                    <Script videoData={videoData} onHandleInputChange={onHandleInputChange} />
+                    <UploadFiles videoData={videoData} onHandleInputChange={onHandleInputChange} />
                 </div>
                 <div>
                     Preview
