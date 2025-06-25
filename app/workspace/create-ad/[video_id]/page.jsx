@@ -17,6 +17,11 @@ const VideoSettingsPage = () => {
     //     vid:video_id
     // })
 
+    useEffect(() => {
+        GetVideoData();
+        // console.log(videoData)
+    }, [])
+
     const GetVideoData = async () => {
         const result = await convex.query(api.videoData.GetVideoDataById, {
             vid: video_id
@@ -24,11 +29,16 @@ const VideoSettingsPage = () => {
         setVideoData(result);
     }
 
-    useEffect(() => {
-        GetVideoData();
-        // console.log(videoData)
-    }, [])
 
+
+
+
+    const onHandleInputChange = async (filed, value) => {
+        setVideoData(prev => ({
+            ...prev,
+            [filed]:value
+        }))
+    } 
 
     // console.log(videoData)
     return (
@@ -38,7 +48,7 @@ const VideoSettingsPage = () => {
 
             <div className='grid grid-cols-1 md:grid-cols-3 mt-8'>
                 <div className='md:col-span-2'>
-                    <Script videoData={videoData} />
+                    <Script videoData={videoData} onHandleInputChange={onHandleInputChange } />
                 </div>
                 <div>
                     Preview
