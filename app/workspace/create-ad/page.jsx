@@ -1,17 +1,20 @@
 'use client'
 
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { UserDetailsContext } from '@/context/UserContext'
-import { api } from '@/convex/_generated/api'
 import axios from 'axios'
-import { useMutation } from 'convex/react'
-import { LoaderPinwheel, Sparkles } from 'lucide-react'
 import Image from 'next/image'
-import React, { useContext, useState } from 'react'
+import { useMutation } from 'convex/react'
+import { useContext, useState } from 'react'
+import { LoaderPinwheel, Sparkles } from 'lucide-react'
+
+import { api } from '@/convex/_generated/api'
+import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/button'
+import { UserDetailsContext } from '@/context/UserContext'
+import { useRouter } from 'next/navigation'
 
 const CreateAdPage = () => {
 
+    const router = useRouter();
     const [userInput, setUserInput] = useState('')
     const [loading, setLoading] = useState(false);
     const { userDetails, setUserDetails } = useContext(UserDetailsContext)
@@ -37,6 +40,7 @@ const CreateAdPage = () => {
         })
         // console.log(resp)
         setLoading(false)
+        router.push('/workspace/create-ad/' + resp)
     }
 
     return (
@@ -53,14 +57,14 @@ const CreateAdPage = () => {
 
 
             <Input placeholder="Enter topic or product info"
-                className={'w-lg mt-5 text-lg mx-auto'}
+                className={'w-lg mt-5 text-lg mx-auto text-center'}
                 onChange={(e) => { setUserInput(e.target.value) }}
             />
 
             {
                 userDetails.name && (
                     <Button className={'w-md mt-5 text-center mx-auto gradient'}
-                        onClick={generateAiVideoScript} disabled={loading}>
+                        onClick={generateAiVideoScript} disabled={loading || userInput.length===0}>
                         {
                             !loading
                                 ? (<> <Sparkles /> Create!</>)

@@ -1,8 +1,9 @@
 'use client'
 
 
-import React, { useContext } from 'react'
 import Image from 'next/image'
+import React, { useContext } from 'react'
+
 import {
     Sidebar,
     SidebarContent,
@@ -15,9 +16,10 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import { Button } from '@/components/ui/button'
-import {  usePathname } from 'next/navigation'
+
 import { menuOptions } from '@/data/data'
+import { usePathname } from 'next/navigation'
+import { Button } from '@/components/ui/button'
 import { UserDetailsContext } from '@/context/UserContext'
 
 

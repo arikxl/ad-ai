@@ -1,5 +1,5 @@
-import { defineSchema, defineTable } from "convex/server";
 import { v } from "convex/values";
+import { defineSchema, defineTable } from "convex/server";
 
 export default defineSchema({
     users: defineTable({
@@ -20,7 +20,6 @@ export default defineSchema({
         avatar: v.optional(v.any()),
         voice: v.optional(v.any()),
         avatarUrl: v.optional(v.string()),
-        videoUrl: v.optional(v.any()),
         videoUrl: v.optional(v.any()),
         uid: v.id('users')
 

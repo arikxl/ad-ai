@@ -1,12 +1,12 @@
 'use client'
 
-import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
-import { UserDetailsContext } from '@/context/UserContext';
-import { api } from '@/convex/_generated/api';
 import { useUser } from '@clerk/nextjs';
 import { useMutation } from 'convex/react'
-import React, { useEffect, useState } from 'react'
+import { api } from '@/convex/_generated/api';
 import AppSidebar from './_components/AppSidebar';
+import React, { useEffect, useState } from 'react'
+import { UserDetailsContext } from '@/context/UserContext';
+import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 
 const WorkspaceProvider = ({ children }) => {
 

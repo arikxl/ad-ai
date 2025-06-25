@@ -1,6 +1,7 @@
-import { GENERATE_SCRIPT_PROMPT } from "@/service/prompt";
-import { NextResponse } from "next/server"
 import OpenAI from "openai"
+import { NextResponse } from "next/server"
+import { GENERATE_SCRIPT_PROMPT } from "@/service/prompt";
+
 
 export const openai = new OpenAI({
     baseURL: "https://openrouter.ai/api/v1",
