@@ -39,7 +39,7 @@ const AppSidebar = () => {
             <SidebarHeader className='flex items-center my-1' >
                 <Image src={'/imgs/logo.png'} alt='Arik Alexandrov' width={200} height={10} />
                 {
-                    userDetails.name && (<span className='mt-[-15px]'>Shalom {userDetails?.name}</span>)  
+                    userDetails.name && (<span className='mt-[-15px]'>Shalom {userDetails?.name}</span>)
                 }
             </SidebarHeader>
             <hr />
@@ -59,15 +59,15 @@ const AppSidebar = () => {
                                     <SidebarMenuItem key={idx}>
                                         <SidebarMenuButton asChild className={'p-2 text-md'}>
                                             <a href={m.path}
-                                                className={m.path === path ?'text-white bg-[#3D8ABD]':'flex items-center gap-2'}>
-                                                <m.icon width={12} height={14} className='w-12 h-12'/>
-                                                <span >{m.title }</span>
-                                                </a>
+                                                className={m.path === path ? 'text-white bg-[#3D8ABD]' : 'flex items-center gap-2'}>
+                                                <m.icon width={12} height={14} className='w-12 h-12' />
+                                                <span >{m.title}</span>
+                                            </a>
                                         </SidebarMenuButton>
                                     </SidebarMenuItem>
                                 ))
                             }
-                      </SidebarMenu>
+                        </SidebarMenu>
                     </SidebarGroupContent>
                 </SidebarGroup >
 

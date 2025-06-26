@@ -2,7 +2,7 @@ import React from 'react'
 import WorkspaceProvider from './provider'
 
 export const metadata = {
-    // title: "AdXL AI",
+    // title: "AdXL AI2",
     // description: "Created by Arik Alexandrov",
     icons: {
         icon: "/imgs/icon.png",

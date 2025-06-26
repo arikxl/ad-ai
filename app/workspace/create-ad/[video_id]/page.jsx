@@ -6,6 +6,7 @@ import { useParams } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import Script from './_components/Script';
 import UploadFiles from './_components/UploadFiles';
+import Avatar from './_components/Avatar';
 
 const VideoSettingsPage = () => {
 
@@ -51,6 +52,7 @@ const VideoSettingsPage = () => {
                 <div className='md:col-span-2'>
                     <Script videoData={videoData} onHandleInputChange={onHandleInputChange} />
                     <UploadFiles videoData={videoData} onHandleInputChange={onHandleInputChange} />
+                    <Avatar />
                 </div>
                 <div>
                     Preview

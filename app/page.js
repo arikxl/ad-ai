@@ -6,9 +6,11 @@ import Image from "next/image";
 export default function Home() {
   return (
     <>
-      abcdefghijklmnopqrstuvwxyz
-
-      <Button>TEST</Button>
+      
+      <a href="/workspace">
+        
+      <Button>Workspace</Button>
+    </a>
       <UserButton/>
     </>
   );
