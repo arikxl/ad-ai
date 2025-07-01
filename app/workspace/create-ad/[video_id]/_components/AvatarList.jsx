@@ -60,7 +60,7 @@ const AvatarList = ({ videoData, onHandleInputChange }) => {
                             <div key={idx}
                                 className={`${videoData?.avatar?.presenter_id === a.presenter_id
                                     ? ' border-primary bg-blue-100 text-primary'
-                                    : ' border-white'} rounded-lg border cursor-pointer  p-1`}
+                                    : ' border-white'} rounded-lg border cursor-pointer  p-1 hover:bg-blue-50`}
                                 onClick={() => onHandleInputChange('avatar', a)}>
                                 <Image src={a?.thumbnail_url} width={100} height={100} alt={a?.name}
                                     className='rounded-lg bg-ring' />
