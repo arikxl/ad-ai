@@ -21,7 +21,7 @@ const VoiceList = ({ onHandleInputChange, videoData }) => {
             const array = result?.data || [];
 
             const currentLang = localeMap[videoData?.language] || 'he-IL';
-            console.log('currentLang:', currentLang);
+            // console.log('currentLang:', currentLang);
 
             const filterVoices = array.filter((voice) =>
                 voice.languages.some((lang) => lang.locale === currentLang)
@@ -46,12 +46,12 @@ const VoiceList = ({ onHandleInputChange, videoData }) => {
     // }
 
 
-    console.log(videoData.language)
+    // console.log(videoData.language)
 
     return (
         <div className='p-5 rounded-xl shadow mt-6'>
             <h2 className='font-bold text-xl flex gap-2 items-center  mb-3'>
-                <Mic className='p-2 bg-cyan-700 text-white h-10 w-10 rounded-md' />
+                <Mic className='p-2 bg-cyan-800 text-white h-10 w-10 rounded-md' />
 
                 Select Voice
             </h2>

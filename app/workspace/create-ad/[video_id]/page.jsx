@@ -8,6 +8,8 @@ import Script from './_components/Script';
 import UploadFiles from './_components/UploadFiles';
 import AvatarList from './_components/AvatarList';
 import VoiceList from './_components/VoiceList';
+import { Button } from '@/components/ui/button';
+import { Sparkles } from 'lucide-react';
 
 const VideoSettingsPage = () => {
 
@@ -56,6 +58,16 @@ const VideoSettingsPage = () => {
                     <UploadFiles videoData={videoData} onHandleInputChange={onHandleInputChange} />
                     <AvatarList videoData={videoData} onHandleInputChange={onHandleInputChange} />
                     <VoiceList videoData={videoData} onHandleInputChange={onHandleInputChange} />
+                    <Button className={'w-full mt-5 text-center mx-auto gradient'}>
+                        {/* {onClick={} >
+                         {
+                             !loading
+                                 ? (<> <Sparkles /> Create!</>)
+                                 : (<LoaderPinwheel className='animate-spin' />)
+                         } */}
+
+                        <Sparkles /> Create!
+                    </Button>
                 </div>
                 <div>
                     Preview

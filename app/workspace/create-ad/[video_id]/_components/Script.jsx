@@ -17,7 +17,7 @@ const Script = ({ videoData, onHandleInputChange }) => {
                 (
                     <>
                         <h2 className='font-bold text-xl flex gap-2 items-center mb-3'>
-                            <Video className='p-2 bg-cyan-400 text-white h-10 w-10 rounded-md' />
+                            <Video className='p-2 bg-cyan-500 text-white h-10 w-10 rounded-md' />
                             Video Ad Script
                         </h2>
                         <div className=''>

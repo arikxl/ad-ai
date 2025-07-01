@@ -21,7 +21,7 @@ const UploadFiles = ({ videoData, onHandleInputChange }) => {
     return (
         <div className='p-5 rounded-xl shadow mt-6'>
             <h2 className='font-bold text-xl flex gap-2 items-center  mb-3'>
-                <ImageUp className='p-2 bg-cyan-500 text-white h-10 w-10 rounded-md' />
+                <ImageUp className='p-2 bg-cyan-600 text-white h-10 w-10 rounded-md' />
                 Image/Video Upload
             </h2>
 

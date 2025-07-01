@@ -17,25 +17,6 @@ const AvatarList = ({ videoData, onHandleInputChange }) => {
         // console.log(array[3])
     }
 
-    // const getAvatarList = async () => {
-    //     try {
-    //         const result = await axios.get('/api/get-avatar-list');
-    //         const array = result?.data?.presenters || [];
-
-    //         // console.log("All voice IDs:", array.map(a => a.voice?.voice_id));
-
-    //         const filter = array.filter((item) =>
-    //             item?.voice?.voice_id?.includes('en')
-    //         );
-
-    //         console.log("Filtered Hebrew avatars:", filter);
-    //         setAvatarList(filter); // הערך יגיע לרנדר הבא
-    //     } catch (error) {
-    //         console.error("Error fetching avatar list:", error);
-    //     }
-    //   };
-
-
     useEffect(() => {
         getAvatarList();
     }, [])
@@ -44,7 +25,7 @@ const AvatarList = ({ videoData, onHandleInputChange }) => {
     return (
         <div className='p-5 rounded-xl shadow mt-6'>
             <h2 className='font-bold text-xl flex gap-2 items-center  mb-3'>
-                <User className='p-2 bg-cyan-600 text-white h-10 w-10 rounded-md' />
+                <User className='p-2 bg-cyan-700 text-white h-10 w-10 rounded-md' />
                 Select Avatar
             </h2>
 
