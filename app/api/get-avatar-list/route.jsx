@@ -18,7 +18,7 @@ import { NextResponse } from 'next/server';
 
 
 export async function GET(req) {
-    const result = await axios.get('https://api.d-id.com/clips/presenters?limit=200', {
+    const result = await axios.get('https://api.d-id.com/clips/presenters?limit=20', {
         headers: {
             accept: 'application/json',
             authorization: `Basic ${process.env.DID_API_KEY}`

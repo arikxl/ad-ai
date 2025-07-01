@@ -52,7 +52,7 @@ const VideoSettingsPage = () => {
                 <div className='md:col-span-2'>
                     <Script videoData={videoData} onHandleInputChange={onHandleInputChange} />
                     <UploadFiles videoData={videoData} onHandleInputChange={onHandleInputChange} />
-                    <AvatarList />
+                    <AvatarList videoData={videoData} onHandleInputChange={onHandleInputChange} />
                 </div>
                 <div>
                     Preview

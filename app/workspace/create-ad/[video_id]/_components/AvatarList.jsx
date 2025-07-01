@@ -5,7 +5,7 @@ import { User } from 'lucide-react'
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 
-const AvatarList = () => {
+const AvatarList = ({ videoData, onHandleInputChange }) => {
 
     const [avatarList, setAvatarList] = useState([])
 
@@ -14,7 +14,7 @@ const AvatarList = () => {
         const result = await axios.get('/api/get-avatar-list')
         const array = result?.data?.presenters
         setAvatarList(array)
-        console.log(array[9])
+        console.log(array[12])
         // console.log(array[0])
         // console.log(array[0]?.voice?.voice_id)
         // const filter = array.filter((item) => item?.voice?.voice_id.includes('en'))
@@ -60,13 +60,17 @@ const AvatarList = () => {
                     Select your Fav Avatar for Video ad
                 </label>
 
-                <div className='flex flex-wrap gap-4 justify-between mt-4'>
+                <div className='flex flex-wrap gap-2 justify-between mt-4 h-[200px] overflow-auto'>
                     {
-                        avatarList?.map((a, idx) => (
-                            <div key={idx} className='text-center'>
+                        avatarList?.length > 0 && avatarList.map((a, idx) => (
+                            <div key={idx}
+                                className={`${videoData?.avatar?.presenter_id === a.presenter_id
+                                    ? ' border-primary bg-blue-100 text-primary'
+                                    : ' border-white'} rounded-lg border cursor-pointer  p-1`}
+                                onClick={() => onHandleInputChange('avatar', a)}>
                                 <Image src={a?.thumbnail_url} width={100} height={100} alt={a?.name}
-                                    className='rounded-lg' />
-                                <h2 >{a.name }</h2>
+                                    className='rounded-lg bg-ring' />
+                                <h2 className='text-center'>{a.name}</h2>
                             </div>
                         ))
                     }
