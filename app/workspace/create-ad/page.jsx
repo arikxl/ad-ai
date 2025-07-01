@@ -4,7 +4,7 @@ import axios from 'axios'
 import Image from 'next/image'
 import { useMutation } from 'convex/react'
 import { useContext, useState } from 'react'
-import { LoaderPinwheel, Sparkles } from 'lucide-react'
+import { Languages, LanguagesIcon, LoaderPinwheel, LucideLanguages, Sparkles } from 'lucide-react'
 
 import { api } from '@/convex/_generated/api'
 import { Input } from '@/components/ui/input'
@@ -16,6 +16,7 @@ const CreateAdPage = () => {
 
     const router = useRouter();
     const [userInput, setUserInput] = useState('')
+    const [language, setLanguage] = useState('hebrew')
     const [loading, setLoading] = useState(false);
     const { userDetails, setUserDetails } = useContext(UserDetailsContext)
     // console.log(userDetails)
@@ -26,7 +27,8 @@ const CreateAdPage = () => {
     const generateAiVideoScript = async () => {
         setLoading(true)
         const result = await axios.post('/api/generate-script', {
-            topic: userInput
+            topic: userInput,
+            language: language
         })
         // console.log(result.data)
 
@@ -36,6 +38,7 @@ const CreateAdPage = () => {
         const resp = await CreateNewVideoData({
             uid: userDetails?._id,
             topic: userInput,
+            language: language,
             scriptVariant: jsonResult
         })
         // console.log(resp)
@@ -54,6 +57,14 @@ const CreateAdPage = () => {
             <p className='text-gray-500 mt-3 text-lg text-center'>
                 🚀 Turn your ideas into stunning, scroll-stopping videos - instantly, effortlessly and without editing skills!
             </p>
+
+
+            <div className='flex gap-8 justify-center'>
+                <LanguagesIcon />
+                <button disabled={loading} onClick={() => setLanguage('hebrew')}>HE</button>
+                <button disabled={loading} onClick={() => setLanguage('english')}>EN</button>
+                <button disabled={loading} onClick={() => setLanguage('russian')}>RU</button>
+            </div>
 
 
             <Input placeholder="Enter topic or product info"

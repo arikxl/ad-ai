@@ -33,9 +33,10 @@ const Script = ({ videoData, onHandleInputChange }) => {
                             {
                                 videoData.scriptVariant &&
                                 (
-                                    <Textarea dir="rtl"
+                                    <Textarea dir={videoData?.language === 'hebrew' ? 'rtl' : 'ltr'}
                                         value={videoData?.script ?? videoData?.scriptVariant[0]?.content}
-                                        placeholder="Video Script" className={'text-right'}
+                                        placeholder="Video Script"
+                                        className={videoData?.language === 'hebrew' ? 'text-right' : 'text-left'}
                                         onChange={(e) => onHandleInputChange('script', e.target.value)}
                                     />
                                 )
@@ -46,9 +47,11 @@ const Script = ({ videoData, onHandleInputChange }) => {
                         <div className='grid grid-cols-3 gap-3 mt-4'>
                             {
                                 videoData?.scriptVariant?.map((script, idx) => (
-                                    <div dir="rtl" key={idx}
-                                        className={`text-right p-3 border rounded-lg cursor-pointer hover:shadow-lg
-                                             ${script?.content === videoData?.script && 'border-primary bg-blue-50 text-primary'}`}
+                                    <div dir={videoData?.language === 'hebrew' ? 'rtl' : 'ltr'} key={idx}
+                                        className={`p-3 border rounded-lg cursor-pointer hover:shadow-lg
+                                        ${videoData?.language === 'hebrew' ? 'text-right' : 'text-left'}
+                                        ${script?.content === videoData?.script ? 'border-primary bg-blue-50 text-primary' : ''}
+                                      `}
                                         onClick={() => onHandleInputChange('script', script?.content)}
                                     >
                                         <h2 className='line-clamp-3'>{script?.content}</h2>

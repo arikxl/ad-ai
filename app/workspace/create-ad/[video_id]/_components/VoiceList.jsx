@@ -7,24 +7,37 @@ import React, { useEffect, useState } from 'react'
 
 const VoiceList = ({ onHandleInputChange, videoData }) => {
 
-    const [voiceList, setVoiceList] = useState([])
+    const [voiceList, setVoiceList] = useState([]);
 
+    const localeMap = {
+        hebrew: 'he-IL',
+        english: 'en-US',
+        russian: 'ru-RU',
+    };
 
     const getVoiceList = async () => {
-        const result = await axios.get('/api/get-voice-list')
-        const array = result?.data
-        // console.log(array)
-        console.log(array[3])
-        const hebrewVoices = array.filter(voice =>
-            voice.languages.some(lang => lang.locale === 'he-IL')
-        );
-        console.log(hebrewVoices)
-        setVoiceList(hebrewVoices)
-    }
+        try {
+            const result = await axios.get('/api/get-voice-list');
+            const array = result?.data || [];
+
+            const currentLang = localeMap[videoData?.language] || 'he-IL';
+            console.log('currentLang:', currentLang);
+
+            const filterVoices = array.filter((voice) =>
+                voice.languages.some((lang) => lang.locale === currentLang)
+            );
+
+            setVoiceList(filterVoices);
+        } catch (err) {
+            console.error('Error loading voices:', err);
+        }
+    };
 
     useEffect(() => {
-        getVoiceList();
-    }, [])
+        if (videoData?.language) {
+            getVoiceList();
+        }
+    }, [videoData?.language])
 
     // const playDemo = (voice) => {
     //     const previewUrl = voice.languages.find(lang => lang.locale === 'en-US')?.previewUrl;
@@ -33,6 +46,7 @@ const VoiceList = ({ onHandleInputChange, videoData }) => {
     // }
 
 
+    console.log(videoData.language)
 
     return (
         <div className='p-5 rounded-xl shadow mt-6'>
@@ -47,7 +61,7 @@ const VoiceList = ({ onHandleInputChange, videoData }) => {
                     Select the perfect voice for your avatar
                 </label>
 
-                <div className='py-2 pt-4 grid grid-cols-2 gap-2'>
+                <div className='py-2 pt-4 grid grid-cols-2 gap-2 h-[200px] overflow-auto'>
                     {
                         voiceList.length > 0 && voiceList.map((v, idx) => (
                             <div key={idx}
@@ -58,7 +72,14 @@ const VoiceList = ({ onHandleInputChange, videoData }) => {
 
                                 <PlayCircle className={`${v?.gender === 'male' ? 'text-blue-400' : 'text-[hotpink]'}`} />
                                 <div className=''>
-                                    <h2>{v?.name}</h2>
+                                    <h2>
+                                        {v?.name}
+                                        {(v.age || v.description) && (
+                                            <> (
+                                                {v.age && `${v.age}`}{v.age && v.description&&', ' }{v.description &&`${v.description}`}
+                                            )</>
+                                        )}
+                                    </h2>
                                 </div>
                             </div>
                         ))

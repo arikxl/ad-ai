@@ -14,6 +14,7 @@ export default defineSchema({
 
     videoData: defineTable({
         topic: v.string(),
+        language: v.string(),
         scriptVariant: v.any(),
         script: v.optional(v.string()),
         assets: v.optional(v.any()),

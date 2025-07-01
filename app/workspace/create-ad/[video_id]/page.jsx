@@ -37,6 +37,7 @@ const VideoSettingsPage = () => {
 
 
     const onHandleInputChange = async (filed, value) => {
+        console.log(value)
         setVideoData(prev => ({
             ...prev,
             [filed]:value

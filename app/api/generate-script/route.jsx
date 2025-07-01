@@ -11,9 +11,9 @@ export const openai = new OpenAI({
 
 export async function POST(req) {
 
-    const { topic } = await req.json();
+    const { topic, language } = await req.json();
 
-    const PROMPT = GENERATE_SCRIPT_PROMPT.replace('{topic}', topic);
+    const PROMPT = GENERATE_SCRIPT_PROMPT.replace('{topic}', topic).replace('{language}', language);
 
     const completion = await openai.chat.completions.create({
         model: "google/gemini-2.0-flash-exp:free",
