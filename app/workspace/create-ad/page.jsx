@@ -46,7 +46,7 @@ const CreateAdPage = () => {
     return (
         <div className='mt-20 flex flex-col'>
             <div className='text-center'>
-                <Image src="/imgs/online.gif" alt='icon' width={200} height={200} className='mx-auto' />
+                <Image unoptimized src="/imgs/online.gif" alt='icon' width={200} height={200} className='mx-auto' />
             </div>
             <h2 className='font-bold text-3xl text-center'>
                 🎥 Create AI Video Ads in Just One Click!

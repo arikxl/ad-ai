@@ -14,13 +14,7 @@ const AvatarList = ({ videoData, onHandleInputChange }) => {
         const result = await axios.get('/api/get-avatar-list')
         const array = result?.data?.presenters
         setAvatarList(array)
-        console.log(array[12])
-        // console.log(array[0])
-        // console.log(array[0]?.voice?.voice_id)
-        // const filter = array.filter((item) => item?.voice?.voice_id.includes('en'))
-        // console.log(filter)
-        // setAvatarList(filter)
-        // console.log(avatarList)
+        // console.log(array[3])
     }
 
     // const getAvatarList = async () => {
@@ -50,7 +44,7 @@ const AvatarList = ({ videoData, onHandleInputChange }) => {
     return (
         <div className='p-5 rounded-xl shadow mt-6'>
             <h2 className='font-bold text-xl flex gap-2 items-center  mb-3'>
-                {/* <User className='p-2 bg-cyan-600 text-white h-10 w-10 rounded-md' /> */}
+                <User className='p-2 bg-cyan-600 text-white h-10 w-10 rounded-md' />
                 Select Avatar
             </h2>
 

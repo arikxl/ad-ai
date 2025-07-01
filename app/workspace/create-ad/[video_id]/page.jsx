@@ -7,6 +7,7 @@ import React, { useEffect, useState } from 'react'
 import Script from './_components/Script';
 import UploadFiles from './_components/UploadFiles';
 import AvatarList from './_components/AvatarList';
+import VoiceList from './_components/VoiceList';
 
 const VideoSettingsPage = () => {
 
@@ -53,6 +54,7 @@ const VideoSettingsPage = () => {
                     <Script videoData={videoData} onHandleInputChange={onHandleInputChange} />
                     <UploadFiles videoData={videoData} onHandleInputChange={onHandleInputChange} />
                     <AvatarList videoData={videoData} onHandleInputChange={onHandleInputChange} />
+                    <VoiceList videoData={videoData} onHandleInputChange={onHandleInputChange} />
                 </div>
                 <div>
                     Preview
